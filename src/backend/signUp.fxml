@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefWidth="800" prefHeight="600"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="backend.SignUpController">
+    <!-- DateTime and User Info -->
+    <VBox alignment="TOP_RIGHT" spacing="5" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">
+        <Label fx:id="dateTimeLabel" styleClass="info-label" />
+        <Label fx:id="userLabel" styleClass="info-label" />
+    </VBox>
+
+    <VBox alignment="CENTER" prefHeight="614.0" prefWidth="800.0" spacing="20"
+          style="-fx-background-color: #25CCF7;"
+          AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
+          AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+
+        <Label styleClass="main-title" text="Sign Up">
+            <font>
+                <Font name="Times New Roman" size="44.0" />
+            </font>
+            <padding>
+                <Insets top="20.0" />
+            </padding>
+        </Label>
+
+        <!-- Sign Up Box -->
+        <VBox alignment="CENTER" maxWidth="400" prefHeight="456.0" prefWidth="400.0" spacing="15"
+              style="-fx-background-color: #67E6DC;" styleClass="signup-box">
+            <padding>
+                <Insets bottom="20" left="40" right="40" top="20" />
+            </padding>
+
+            <Label styleClass="field-label" text="User Type">
+                <font>
+                    <Font size="32.0" />
+                </font>
+            </Label>
+            <ChoiceBox fx:id="userTypeChoice" styleClass="choice-box" />
+
+            <Label prefHeight="18.0" prefWidth="90.0" styleClass="field-label" text="Username">
+                <VBox.margin>
+                    <Insets right="260.0" />
+                </VBox.margin>
+            </Label>
+            <TextField fx:id="username" promptText="Enter username" styleClass="signup-field" />
+
+            <Label prefHeight="18.0" prefWidth="82.0" text="Email">
+                <VBox.margin>
+                    <Insets right="280.0" />
+                </VBox.margin>
+            </Label>
+            <TextField fx:id="email" promptText="Enter email address" styleClass="signup-field" />
+
+            <Label prefHeight="18.0" prefWidth="100.0" styleClass="field-label" text="Password">
+                <VBox.margin>
+                    <Insets right="250.0" />
+                </VBox.margin>
+            </Label>
+            <PasswordField fx:id="password" promptText="Enter password" styleClass="signup-field" />
+
+            <Label prefHeight="18.0" prefWidth="203.0" styleClass="field-label" text="Repeat Password">
+                <VBox.margin>
+                    <Insets right="210.0" />
+                </VBox.margin>
+            </Label>
+            <PasswordField fx:id="repeatPassword" promptText="Repeat password" styleClass="signup-field" />
+
+            <Label prefHeight="18.0" prefWidth="239.0" styleClass="field-label" text="Contact Info">
+                <VBox.margin>
+                    <Insets right="230.0" />
+                </VBox.margin>
+            </Label>
+            <TextField fx:id="contactInfo" promptText="Enter contact info" styleClass="signup-field" />
+
+            <Button onAction="#handleSignUp" styleClass="action-button" text="Sign Up">
+                <VBox.margin>
+                    <Insets top="10.0" />
+                </VBox.margin>
+            </Button>
+            <Hyperlink onAction="#backToLogin" styleClass="back-link" text="Back to Login">
+                <VBox.margin>
+                    <Insets top="10.0" />
+                </VBox.margin>
+            </Hyperlink>
+
+            <Label fx:id="errorLabel" styleClass="error-label" />
+        </VBox>
+    </VBox>
+</AnchorPane>

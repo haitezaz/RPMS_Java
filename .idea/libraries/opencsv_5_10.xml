@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="opencsv-5.10">
+    <CLASSES>
+      <root url="jar://D:/ChromeDownloads/opencsv-5.10.jar!/" />
+      <root url="jar://D:/ChromeDownloads/mysql-connector-j-9.2.0.jar!/" />
+      <root url="file://D:/javafx-sdk-23.0.1/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://D:/javafx-sdk-23.0.1/lib" recursive="false" />
+  </library>
+</component>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <?import javafx.geometry.Insets?>
+        <?import javafx.scene.chart.CategoryAxis?>
+        <?import javafx.scene.chart.LineChart?>
+        <?import javafx.scene.chart.NumberAxis?>
+        <?import javafx.scene.control.Button?>
+        <?import javafx.scene.control.ComboBox?>
+        <?import javafx.scene.control.Label?>
+        <?import javafx.scene.control.ListView?>
+        <?import javafx.scene.control.Tab?>
+        <?import javafx.scene.control.TabPane?>
+        <?import javafx.scene.control.TableColumn?>
+        <?import javafx.scene.control.TableView?>
+        <?import javafx.scene.control.TextArea?>
+        <?import javafx.scene.layout.ColumnConstraints?>
+        <?import javafx.scene.layout.GridPane?>
+        <?import javafx.scene.layout.HBox?>
+        <?import javafx.scene.layout.RowConstraints?>
+        <?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #B0E0E6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="backend.DoctorDashboardController">
+
+    <!-- Navigation Bar -->
+    <HBox spacing="2" style="-fx-background-color: #25CCF7; -fx-padding: 10;">
+        <children>
+            <Button onAction="#handleDashboard" styleClass="nav-button" text="Dashboard" />
+            <Button onAction="#handleMyPatients" styleClass="nav-button" text="My Patients" />
+            <Button onAction="#handleAppointments" styleClass="nav-button" text="Appointments" />
+            <Button onAction="#handleChatVideo" styleClass="nav-button" text="Chat/Video" />
+            <Button onAction="#handleEmergencyAlerts" styleClass="nav-button" text="Emergency Alerts" />
+            <Button onAction="#handleReports" styleClass="nav-button" text="Reports" />
+        </children>
+    </HBox>
+
+    <!-- Doctor Info -->
+    <VBox spacing="5" style="-fx-padding: 10;">
+        <children>
+            <Label fx:id="doctorIdLabel" styleClass="info-label" text="DOCTOR ID: " />
+            <Label fx:id="doctorNameLabel" styleClass="info-label" text="DOCTOR NAME: " />
+            <Label fx:id="specialtyLabel" styleClass="info-label" text="SPECIALTY: " />
+        </children>
+    </VBox>
+
+    <!-- Main Content -->
+    <TabPane styleClass="content-tabs" VBox.vgrow="ALWAYS">
+        <tabs>
+            <Tab closable="false" text="Patient Monitoring">
+                <content>
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets bottom="10" left="10" right="10" top="10" />
+                        </padding>
+                        <children>
+                            <!-- Patient Selection -->
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <children>
+                                    <ComboBox fx:id="patientSelector" prefWidth="200" promptText="Select Patient" />
+                                    <Button onAction="#handleViewPatientDetails" text="View Details" />
+                                </children>
+                            </HBox>
+
+                            <!-- Patient Vitals Chart -->
+                            <LineChart fx:id="patientVitalsChart" prefHeight="300">
+                                <xAxis>
+                                    <CategoryAxis label="Time" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="Value" />
+                                </yAxis>
+                            </LineChart>
+
+                            <!-- Latest Vitals -->
+                            <GridPane hgap="10" vgap="5">
+                                <children>
+                                    <Label text="Heart Rate:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                    <Label fx:id="heartRateLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                                    <Label text="Blood Pressure:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                    <Label fx:id="bpLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                    <Label text="Temperature:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                    <Label fx:id="tempLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                                    <Label text="Oxygen Level:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                    <Label fx:id="oxygenLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                </children>
+                                <columnConstraints>
+                                    <ColumnConstraints />
+                                    <ColumnConstraints />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                </rowConstraints>
+                            </GridPane>
+                        </children>
+                    </VBox>
+                </content>
+            </Tab>
+
+            <Tab closable="false" text="Feedback &amp; Prescriptions">
+                <content>
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets bottom="10" left="10" right="10" top="10" />
+                        </padding>
+                        <children>
+                            <TextArea fx:id="feedbackArea" prefHeight="100" promptText="Enter feedback for patient..." />
+                            <TextArea fx:id="prescriptionArea" prefHeight="100" promptText="Enter prescription details..." />
+                            <HBox spacing="10">
+                                <children>
+                                    <Button onAction="#handleSendFeedback" text="Send Feedback" />
+                                    <Button onAction="#handleSavePrescription" text="Save Prescription" />
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+                </content>
+            </Tab>
+
+            <Tab closable="false" text="Today's Appointments">
+                <content>
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets bottom="10" left="10" right="10" top="10" />
+                        </padding>
+                        <children>
+                            <TableView fx:id="appointmentsTable" VBox.vgrow="ALWAYS">
+                                <columns>
+                                    <TableColumn fx:id="timeColumn" prefWidth="100" text="Time" />
+                                    <TableColumn fx:id="patientColumn" prefWidth="200" text="Patient" />
+                                    <TableColumn fx:id="typeColumn" prefWidth="150" text="Type" />
+                                    <TableColumn fx:id="statusColumn" prefWidth="100" text="Status" />
+                                </columns>
+                            </TableView>
+                        </children>
+                    </VBox>
+                </content>
+            </Tab>
+
+            <Tab closable="false" text="Emergency Notifications">
+                <content>
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets bottom="10" left="10" right="10" top="10" />
+                        </padding>
+                        <children>
+                            <ListView fx:id="emergencyList" VBox.vgrow="ALWAYS" />
+                        </children>
+                    </VBox>
+                </content>
+            </Tab>
+        </tabs>
+    </TabPane>
+
+    <!-- Bottom Action Bar -->
+    <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10;">
+        <children>
+            <Button onAction="#handleGenerateReport" styleClass="action-button" text="Generate Report" />
+            <Button onAction="#handleStartConsultation" styleClass="action-button" text="Start Consultation" />
+            <Button onAction="#handleViewHistory" styleClass="action-button" text="View Patient History" />
+        </children>
+    </HBox>
+
+</VBox>
