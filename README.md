@@ -1,3 +1,6 @@
+![WhatsApp Image 2025-06-05 at 10 13 11_9cff5f1c](https://github.com/user-attachments/assets/de0a70e8-ffbd-4234-a951-6cef0050695e)
+
+
 🏥 Remote Patient Monitoring System
 This project is a Remote Patient Monitoring System — a desktop app that helps doctors and patients stay connected online, even when they are far from each other. It was made as part of an Object-Oriented Programming (OOP) course.
 
